@@ -5,15 +5,56 @@ You do **not** need a domain, a TLS certificate, nginx, or any open inbound port
 `*.trycloudflare.com` hostname for your server and the script turns it into a ready-to-import
 `vless://` or `vmess://` link, printed as text **and as a QR code**.
 
+```mermaid
+flowchart LR
+    C["📱 <b>Client</b><br/>Happ · v2rayNG · Hiddify"]
+    CF["☁️ <b>Cloudflare CDN</b><br/>connect via a Cloudflare IPv4"]
+    subgraph S["🖥️ Your server"]
+        direction LR
+        CD["<b>cloudflared</b>"] --> X["<b>Xray</b><br/>127.0.0.1"]
+    end
+    N(("🌍<br/>Internet"))
+
+    C -- "TLS + WebSocket" --> CF
+    CF -. "random-words.trycloudflare.com<br/>Quick Tunnel (outbound from server)" .-> CD
+    X --> N
+
+    classDef box fill:#f6f8fa,stroke:#57606a,stroke-width:1.5px,color:#1f2328;
+    classDef cf fill:#fff4e5,stroke:#f38020,stroke-width:2px,color:#1f2328;
+    class C,CD,X,N box;
+    class CF cf;
 ```
- Client (Happ / v2rayNG / Hiddify ...)
-        │   TLS + WebSocket to a Cloudflare IPv4
-        ▼
- Cloudflare CDN  ──────────►  random-words.trycloudflare.com
-        │   Quick Tunnel (outbound connection from your server)
-        ▼
- Your server:  cloudflared ─► Xray (127.0.0.1) ─► Internet
+
+<details>
+<summary>Plain-text version</summary>
+
 ```
+  ┌──────────────────────────┐
+  │  Client                  │
+  │  Happ, v2rayNG, Hiddify  │
+  └────────────┬─────────────┘
+               │  TLS + WebSocket to a Cloudflare IPv4
+               ▼
+  ┌──────────────────────────┐
+  │  Cloudflare CDN          │
+  │  random-words            │
+  │  .trycloudflare.com      │
+  └────────────┬─────────────┘
+               │  Quick Tunnel (outbound connection from your server)
+               ▼
+  ┌──────────────────────────┐
+  │  Your server             │
+  │                          │
+  │  cloudflared             │
+  │       │                  │
+  │       ▼                  │
+  │  Xray (127.0.0.1)        │
+  └────────────┬─────────────┘
+               ▼
+           Internet
+```
+
+</details>
 
 ## Features
 
