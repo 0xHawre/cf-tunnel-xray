@@ -76,7 +76,7 @@ flowchart LR
 On the server, as root:
 
 ```bash
-git clone https://github.com/<your-user>/cf-tunnel-xray.git
+git clone https://github.com/0xHawre/cf-tunnel-xray.git
 cd cf-tunnel-xray
 sudo ./install.sh
 ```
