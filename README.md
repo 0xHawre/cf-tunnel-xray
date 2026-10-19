@@ -7,13 +7,13 @@ You do **not** need a domain, a TLS certificate, nginx, or any open inbound port
 
 ```mermaid
 flowchart LR
-    C["📱 <b>Client</b><br/>Happ · v2rayNG · Hiddify"]
-    CF["☁️ <b>Cloudflare CDN</b><br/>connect via a Cloudflare IPv4"]
-    subgraph S["🖥️ Your server"]
+    C[" <b>Client</b><br/>"]
+    CF[" <b>Cloudflare CDN</b><br/>connect via a Cloudflare IPv4"]
+    subgraph S["Your server"]
         direction LR
         CD["<b>cloudflared</b>"] --> X["<b>Xray</b><br/>127.0.0.1"]
     end
-    N(("🌍<br/>Internet"))
+    N(("<br/>Internet"))
 
     C -- "TLS + WebSocket" --> CF
     CF -. "random-words.trycloudflare.com<br/>Quick Tunnel (outbound from server)" .-> CD
