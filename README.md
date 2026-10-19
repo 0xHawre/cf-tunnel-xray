@@ -163,17 +163,6 @@ The authors provide it as-is, without warranty.
 
 [Xray-core](https://github.com/XTLS/Xray-core) · [cloudflared](https://github.com/cloudflare/cloudflared) · [qrencode](https://fukuchi.org/works/qrencode/)
 
-## Roadmap
-- Rewrite in Rust
-- Add a panel/management interface with WASM/JS/TS
-- Add all of the pre-existing config methods that exist
-- Add post-quantum network and cryptographic schemes
-- Add mixnet (maybe combine with Nym?!)
-- Add the ability to tunnel between a few servers
-- Add a test section for newer and cutting-edge tech against any kind of DPI (goals should be easy AF and fully automated)
-- Integration/combination with the Tor network
-- Anything else?
-
 
 ## License
 
